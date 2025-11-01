@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 type IconKey = "github" | "discord" | "twitter" | "youtube";
 
@@ -21,6 +21,6 @@ const iconNames: Record<IconKey, string> = {
 const iconName = iconNames[icon] ?? iconNames.github;
 ---
 <a class="contact__link" href={url} target="_blank" rel="noopener noreferrer">
-  <Icon class="contact__icon" name={iconName} aria-hidden="true" />
+  <Icon class="contact__icon" name={iconName} />
   <span>{label}</span>
 </a>
