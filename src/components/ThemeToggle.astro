@@ -1,0 +1,63 @@
+<button
+  class="theme-toggle"
+  type="button"
+  id="theme-toggle"
+  aria-label="Toggle color theme"
+  aria-pressed="true"
+>
+  <span aria-hidden="true">☀️</span>
+  <span class="sr-only">Toggle theme</span>
+</button>
+<style is:inline>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+<script is:inline>
+  const storageKey = 'ruginit-theme';
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+
+  const applyTheme = (theme) => {
+    const isDark = theme === 'dark';
+    root.dataset.theme = theme;
+    root.classList.toggle('dark', isDark);
+    toggle?.setAttribute('aria-pressed', String(isDark));
+    const icon = isDark ? '☀️' : '🌙';
+    if (toggle?.firstElementChild) {
+      toggle.firstElementChild.textContent = icon;
+    }
+  };
+
+  const stored = localStorage.getItem(storageKey);
+  const initialTheme = stored ?? 'dark';
+  applyTheme(initialTheme);
+
+  toggle?.addEventListener('click', () => {
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(storageKey, nextTheme);
+    applyTheme(nextTheme);
+  });
+
+  const handlePrefChange = (event) => {
+    const storedTheme = localStorage.getItem(storageKey);
+    if (storedTheme) return;
+    const prefers = event.matches ? 'dark' : 'light';
+    applyTheme(prefers);
+  };
+
+  if (typeof prefersDark.addEventListener === 'function') {
+    prefersDark.addEventListener('change', handlePrefChange);
+  } else if (typeof prefersDark.addListener === 'function') {
+    prefersDark.addListener(handlePrefChange);
+  }
+</script>

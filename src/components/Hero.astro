@@ -1,0 +1,23 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { name, tagline, imageSrc, imageAlt } = Astro.props as Props;
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__content">
+    <p class="hero__tagline">{tagline}</p>
+    <h1 id="hero-title" class="hero__title">{name}</h1>
+    <p class="hero__intro">
+      Electronic engineering student, tinkerer, and caretaker of small self-hosted
+      tools.
+    </p>
+  </div>
+  <figure class="hero__media">
+    <img src={imageSrc} alt={imageAlt} loading="lazy" />
+  </figure>
+</section>

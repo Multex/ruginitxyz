@@ -1,14 +1,18 @@
 {
-  "name": "--npm-client",
+  "name": "ruginit-site",
+  "private": true,
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/starlight": "^0.36.2",
+    "@fontsource-variable/inter": "^5.2.1",
     "astro": "^5.15.3"
   }
 }

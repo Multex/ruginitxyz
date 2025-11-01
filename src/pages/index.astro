@@ -1,16 +1,166 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import HostCard from "../components/HostCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Footer from "../components/Footer.astro";
+import ContactLink from "../components/ContactLink.astro";
 
+const aboutLines = [
+  "21 years old and I still haven't learn a programming language :pain:",
+  "I'm Ruginit, formerly know as Multex_ on Twitch and some other platforms.",
+  "I'm studying Electronic Engineering. And I'm still learning about everything.",
+  "Also, I make vocaloid covers on my free time.",
+];
+
+const hostedApps = [
+  {
+    name: "Patchy",
+    url: "https://patchy.ruginit.xyz",
+    description: "Temporary and light file uploader.",
+    sourceUrl: "https://codeberg.org/Fijxu/patchy",
+  },
+  {
+    name: "Chiyogami",
+    url: "https://paste.ruginit.xyz/",
+    description: "Yet another pastebin.",
+    sourceUrl: "https://github.com/rhee876527/chiyogami",
+  },
+];
+
+const codeProjects = [
+  {
+    name: "Barbot-ESP32",
+    description:
+      "Mezclador de cócteles WiFi que funciona con ESP32 y controles usando el navegador",
+    repoUrl: "https://github.com/Multex/barbot-esp32",
+  },
+];
+
+const musicCovers = [
+  {
+    title: "Madeleine - Good Kid [Kasane Teto Cover]",
+    youtubeId: "tHDUwX3caQc",
+  },
+  {
+    title: "BoyWithUke - Ghost [GUMI Cover]",
+    youtubeId: "N08SlcZOF50",
+  },
+  {
+    title: "bbno$ - meant to be [Kasane Teto Cover]",
+    youtubeId: "D7ge-JME0HE",
+  },
+];
+
+const contactLinks = [
+  { label: "GitHub", url: "https://github.com/Multex", icon: "github" as const },
+  { label: "Discord", url: "https://discord.com/users/ruginit", icon: "discord" as const },
+  { label: "X / Twitter", url: "https://x.com/ruginit_", icon: "twitter" as const },
+  { label: "YouTube", url: "https://www.youtube.com/@ruginit", icon: "youtube" as const },
+];
 ---
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero
+      name="Ruginit"
+      tagline="mom, i vibecoded a webpage"
+      imageSrc="/images/ruginit.gif"
+      imageAlt="hu tao eating, literally me"
+    />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section id="about" class="about">
+      <div class="about__card">
+        {aboutLines.map((line) => (
+          <p>{line}</p>
+        ))}
+      </div>
+      <figure class="about__figure">
+        <img
+          class="about__image"
+          src="/images/english-mistake.webp"
+          alt="yo no hablo ingles"
+          loading="lazy"
+        />
+        <figcaption class="about__caption">mi lengua nativa es el español</figcaption>
+      </figure>
+    </section>
+
+    <section id="hosting">
+      <header>
+        <h2>Things I host</h2>
+        <p>Self-hosted tools that I found on github or twitter and host
+          on ruginit.xyz</p>
+      </header>
+      <div class="card-grid">
+        {hostedApps.map((app) => (
+          <HostCard {...app} />
+        ))}
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <header>
+        <h2>Projects</h2>
+        <p>Personal projects, code and vocaloid covers</p>
+      </header>
+      <div class="projects__subsection">
+        <h3>Code Projects</h3>
+        <p>Some code projects</p>
+        <div class="card-grid">
+          {codeProjects.map((project) => (
+            <ProjectCard {...project} />
+          ))}
+        </div>
+      </div>
+      <div class="projects__subsection projects__subsection--music">
+        <h3>Music Covers</h3>
+        <p>"Vocaloid" covers I made!</p>
+        <div class="media-grid">
+          {musicCovers.map(({ title, youtubeId }) => (
+            <article class="card video-card">
+              <div class="video-card__media">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                  title={`YouTube cover: ${title}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h4 class="video-card__title">{title}</h4>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <header>
+        <h2>Contact &amp; links</h2>
+        <p>Reach out or follow along</p>
+      </header>
+      <div class="contact__links">
+        {contactLinks.map(({ label, url, icon }) => (
+          <ContactLink label={label} url={url} icon={icon} />
+        ))}
+      </div>
+    </section>
+
+    <section id="counter" class="counter">
+      <header>
+        <h2>Visitor counter</h2>
+        <p>Counted by Moe Counter via count.ayaya.beauty</p>
+      </header>
+      <div class="counter__display">
+        <img
+          src="https://count.ayaya.beauty/@ruginit?theme=original-new"
+          alt="Visitor counter for ruginit.xyz"
+          loading="lazy"
+        />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

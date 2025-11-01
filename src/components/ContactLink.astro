@@ -1,0 +1,26 @@
+---
+import { Icon, type StarlightIcon } from "@astrojs/starlight/components";
+
+type IconKey = "github" | "discord" | "twitter" | "youtube";
+
+interface Props {
+  label: string;
+  url: string;
+  icon?: IconKey;
+}
+
+const { label, url, icon = "github" } = Astro.props;
+
+const iconNames: Record<IconKey, StarlightIcon> = {
+  github: "github",
+  discord: "discord",
+  twitter: "x.com",
+  youtube: "youtube",
+};
+
+const iconName = iconNames[icon] ?? iconNames.github;
+---
+<a class="contact__link" href={url} target="_blank" rel="noopener noreferrer">
+  <Icon class="contact__icon" name={iconName} aria-hidden="true" />
+  <span>{label}</span>
+</a>

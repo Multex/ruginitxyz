@@ -1,0 +1,28 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  repoUrl: string;
+  liveUrl?: string;
+}
+
+const { name, description, repoUrl, liveUrl } = Astro.props as Props;
+---
+<article class="card">
+  <h3 class="card__title">
+    <a href={liveUrl ?? repoUrl} rel="noopener noreferrer" target="_blank">
+      {name}
+    </a>
+  </h3>
+  <p class="card__meta">{description}</p>
+  <div class="card__links">
+    {liveUrl && (
+      <a class="card__pill" href={liveUrl} rel="noopener noreferrer" target="_blank">
+        Live
+      </a>
+    )}
+    <a class="card__pill" href={repoUrl} rel="noopener noreferrer" target="_blank">
+      Repo
+    </a>
+  </div>
+</article>

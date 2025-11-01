@@ -1,0 +1,29 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  description: string;
+  sourceUrl: string;
+}
+
+const { name, url, description, sourceUrl } = Astro.props as Props;
+---
+<article class="card">
+  <h3 class="card__title">
+    <a href={url} rel="noopener noreferrer" target="_blank">{name}</a>
+  </h3>
+  <p class="card__meta">{description}</p>
+  <div class="card__links">
+    <a class="card__pill" href={url} rel="noopener noreferrer" target="_blank">
+      Live
+    </a>
+    <a
+      class="card__pill"
+      href={sourceUrl}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Source
+    </a>
+  </div>
+</article>
