@@ -40,6 +40,7 @@ html {
   background: var(--color-bg);
   color: var(--color-text);
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -356,6 +357,53 @@ section p {
   background: color-mix(in srgb, var(--color-card) 70%, var(--color-accent) 25%);
 }
 
+.random {
+  display: grid;
+  gap: 1rem;
+}
+
+.random__content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: start;
+  width: 100%;
+}
+
+.random__images {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.random__figure {
+  display: grid;
+  gap: 0.75rem;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+}
+
+.random__figure--video {
+  max-width: 100%;
+}
+
+.random__image {
+  width: 100%;
+  max-width: clamp(280px, 100%, 340px);
+  border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+}
+
+.random__video {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+}
+
+.random__caption {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
 .contact {
   display: grid;
   gap: 0.75rem;
@@ -417,6 +465,12 @@ footer {
   color: var(--color-muted);
   font-size: 0.85rem;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .random__content {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (min-width: 768px) {
