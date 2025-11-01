@@ -243,8 +243,8 @@ section p {
   gap: 1.75rem;
 }
 
-.card-grid--stack {
-  grid-template-columns: minmax(0, 1fr);
+.card-grid.card-grid--stack {
+  grid-template-columns: 1fr;
 }
 
 .projects__subsection {
