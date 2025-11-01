@@ -36,6 +36,11 @@ const codeProjects = [
       "Mezclador de cócteles WiFi que funciona con ESP32 y controles usando el navegador",
     repoUrl: "https://github.com/Multex/barbot-esp32",
   },
+  {
+    name: "ruginitxyz",
+    description: "Main page for ruginit.xyz built with Astro",
+    repoUrl: "https://github.com/Multex/ruginitxyz",
+  },
 ];
 
 const musicCovers = [
@@ -108,7 +113,7 @@ const contactLinks = [
       <div class="projects__subsection">
         <h3>Code Projects</h3>
         <p>Some code projects</p>
-        <div class="card-grid">
+        <div class="card-grid card-grid--stack">
           {codeProjects.map((project) => (
             <ProjectCard {...project} />
           ))}

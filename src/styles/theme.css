@@ -243,6 +243,10 @@ section p {
   gap: 1.75rem;
 }
 
+.card-grid--stack {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .projects__subsection {
   display: grid;
   gap: 1.25rem;
