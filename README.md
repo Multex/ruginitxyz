@@ -5,7 +5,7 @@ Personal home page for Ruginit — minimalist, dark-first, and built with Astro 
 ## Stack
 - Astro 5 (static site)
 - Inter variable font
-- Starlight icons for social links
+- astro-icon (Iconify) for social icons
 
 ## Local commands
 - `pnpm install` – install dependencies

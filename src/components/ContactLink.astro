@@ -1,5 +1,5 @@
 ---
-import { Icon, type StarlightIcon } from "@astrojs/starlight/components";
+import { Icon } from "astro-icon";
 
 type IconKey = "github" | "discord" | "twitter" | "youtube";
 
@@ -11,11 +11,11 @@ interface Props {
 
 const { label, url, icon = "github" } = Astro.props;
 
-const iconNames: Record<IconKey, StarlightIcon> = {
-  github: "github",
-  discord: "discord",
-  twitter: "x.com",
-  youtube: "youtube",
+const iconNames: Record<IconKey, string> = {
+  github: "mdi:github",
+  discord: "mdi:discord",
+  twitter: "simple-icons:x",
+  youtube: "mdi:youtube",
 };
 
 const iconName = iconNames[icon] ?? iconNames.github;
