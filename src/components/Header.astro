@@ -18,5 +18,37 @@ const navLinks = [
       ))}
     </nav>
     <ThemeToggle />
+    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    {navLinks.map(({ href, label }) => (
+      <a href={href}>{label}</a>
+    ))}
+  </nav>
 </header>
+
+<script>
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+  menuToggle?.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+    menuToggle.classList.toggle('active');
+    mobileNav?.classList.toggle('active');
+  });
+
+  // Cerrar menú al hacer click en un link
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      menuToggle?.classList.remove('active');
+      mobileNav?.classList.remove('active');
+    });
+  });
+</script>
