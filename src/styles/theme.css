@@ -578,11 +578,11 @@ footer {
     justify-items: start;
   }
 
-  .card-grid {
+  .card-grid:not(.card-grid--stack) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .card-grid > *:nth-child(3):last-child {
+  .card-grid:not(.card-grid--stack) > *:nth-child(3):last-child {
     grid-column: span 2;
   }
 }
