@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 
-type IconKey = "github" | "discord" | "twitter" | "youtube";
+type IconKey = "github" | "twitter" | "youtube";
 
 interface Props {
   label: string;
@@ -13,7 +13,6 @@ const { label, url, icon = "github" } = Astro.props;
 
 const iconNames: Record<IconKey, string> = {
   github: "mdi:github",
-  discord: "mdi:discord",
   twitter: "simple-icons:x",
   youtube: "mdi:youtube",
 };
